@@ -1,9 +1,9 @@
 import { Drink, Figure, Img, Info } from './styles'
 
-const Card = ({ data }) => {
+const Card = ({ data, handleData }) => {
   const { strDrinkThumb, strDrink, idDrink, strAlcoholic, strGlass } = data
   return (
-    <Drink>
+    <Drink onClick={()=> handleData(idDrink)}>
       <Figure>
         <Img src={strDrinkThumb || "https://via.placeholder.com/500x500.png?text=Image+unavailable"} />
       </Figure>

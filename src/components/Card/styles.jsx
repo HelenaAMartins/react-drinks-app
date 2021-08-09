@@ -3,14 +3,13 @@ import { colors } from '../../styles/variables';
 
 
 export const Drink = styled.div`
-background-color: ${colors.white};
+background-color: ${colors.pinkLight};
 border-radius: 5px;
 overflow: hidden;
+cursor: pointer;
 
 &:hover{
-  background-color: ${colors.whiteGray};
-
-  & img {
+  img {
     transform: scale(1.1);
   }
 }

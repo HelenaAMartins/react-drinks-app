@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Main = styled.main`
   width: 100%;
-  min-height: 80vh;
+  min-height: 70vh;
 `;
 
 export const Section = styled.section`
