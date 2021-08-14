@@ -7,8 +7,8 @@ grid-gap: 10px;
 
 @media screen and (min-width: 550px){
   grid-template-columns: repeat(2, 1fr);
-  
 }
+
 @media screen and (min-width: 768px){
   grid-template-columns: repeat(3, 1fr);
   
@@ -16,7 +16,6 @@ grid-gap: 10px;
 
 @media screen and (min-width: 1024px){
   grid-template-columns: repeat(4, 1fr);
-  
 }
 `
 

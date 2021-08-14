@@ -16,8 +16,7 @@ const Modal = ({ drinkId }) => {
 
     }
   }, [drinkId])
-  console.log(rspData);
-
+ 
   return (
 
     <ModalWrapper className={openModal ? 'show' : 'hide'}>
