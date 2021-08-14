@@ -1,10 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
-import { Figure, DrinkInfo, DrinkDetails, DrinkIngredients, IngredientsList, IngredientsItem, DrinkPreparation } from './styles'
-
+import {
+  Figure,
+  DrinkInfo,
+  DrinkDetails,
+  DrinkIngredients,
+  IngredientsList,
+  IngredientsItem,
+  DrinkPreparation,
+} from "./styles";
 
 const DrinkDetail = ({ data }) => {
-  const [ingredientList, setIngredientList] = useState([])
+  const [ingredientList, setIngredientList] = useState([]);
   const {
     strDrink,
     idDrink,
@@ -13,33 +20,41 @@ const DrinkDetail = ({ data }) => {
     strDrinkThumb,
     strGlass,
     strInstructions,
-  } = data
+  } = data;
 
-  const getIngredients = () => {
-    const ingredients = []
+  useEffect(() => {
+    const getIngredients = () => {
+      const ingredients = [];
 
-    for (let i = 1; i < 15; i++) {
-      const ingredient = data[`strIngredient${i}`];
-      const measure = data[`strMeasure${i}`];
+      for (let i = 1; i < 15; i++) {
+        const ingredient = data[`strIngredient${i}`];
+        const measure = data[`strMeasure${i}`];
 
-      if (ingredient !== null && ingredient !== "" && measure !== null && measure !== "") {
-        ingredients.push({
-          ingredient,
-          measure
-        })
+        if (
+          ingredient !== null &&
+          ingredient !== "" &&
+          measure !== null &&
+          measure !== ""
+        ) {
+          ingredients.push({
+            ingredient,
+            measure,
+          });
+        }
       }
-    }
 
-    setIngredientList(ingredients)
-  
-  }
-
-  useEffect(() => getIngredients(), [data])
+      setIngredientList(ingredients);
+    };
+    getIngredients();
+  }, [data]);
 
   return (
     <>
       <DrinkDetails>
-        <Figure> <img alt={strDrink} src={strDrinkThumb} /> </Figure>
+        <Figure>
+          {" "}
+          <img alt={strDrink} src={strDrinkThumb} />{" "}
+        </Figure>
         <DrinkInfo>
           <small>ID: {idDrink}</small>
           <h2>{strDrink}</h2>
@@ -51,12 +66,15 @@ const DrinkDetail = ({ data }) => {
       <DrinkIngredients>
         <h3>Ingredients</h3>
         <IngredientsList>
-          {ingredientList && ingredientList.map((item, i) => {
-            return (<IngredientsItem key={`ingredient_${i}`}>
-              <div>{item.ingredient}</div>
-              <div>{item.measure}</div>
-            </IngredientsItem>)
-          })}
+          {ingredientList &&
+            ingredientList.map((item, i) => {
+              return (
+                <IngredientsItem key={`ingredient_${i}`}>
+                  <div>{item.ingredient}</div>
+                  <div>{item.measure}</div>
+                </IngredientsItem>
+              );
+            })}
         </IngredientsList>
       </DrinkIngredients>
       <DrinkPreparation>
@@ -64,7 +82,7 @@ const DrinkDetail = ({ data }) => {
         <p>{strInstructions}</p>
       </DrinkPreparation>
     </>
-  )
-}
+  );
+};
 
 export default DrinkDetail;
