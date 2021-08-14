@@ -12,6 +12,7 @@ import {
 
 const Modal = ({ drinkId }) => {
   const [openModal, setOpenModal] = useState(false);
+  const { rspData, fetchData } = useAxiosHook();
 
   useEffect(() => {
     if (drinkId) {
@@ -22,9 +23,8 @@ const Modal = ({ drinkId }) => {
       );
       setOpenModal(true);
     }
+    /* eslint-disable-next-line */
   }, [drinkId]);
-
-  const { rspData, fetchData } = useAxiosHook();
 
   return (
     <ModalWrapper className={openModal ? "show" : "hide"}>
